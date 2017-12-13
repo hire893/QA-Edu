@@ -1,89 +1,123 @@
 package com.company;
 
-import com.sun.jdi.Value;
 import games.Matrix;
-import games.Snail;
+import games.Palindrom;
 import calculator.Arithmetic;
+import games.Snail;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) throws IOException {
 
-       // Snail arraySnail = new Snail();
-       // System.out.println(arraySnail.calculateSnail(8));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//Улитка
+        System.out.println("Демонстрация матрицы улитка");
+        System.out.println("Введите размерность матрицы улитки(размерность должна быть больше 3)");
+        String razm = reader.readLine();
+        int size = Integer.parseInt(razm);
+        if (size > 3) {
+            try {
+                Snail.calculateSnail(size);
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка! Нужно вводить число");
+            }
+        } else System.out.println("Ошибка! Размерность массива должна быть больше 3");
 
-        int num1 = 0;
-        while (!(num1 == -1)) {
-
-            System.out.println("Vvedite chislo ot 1 do 9! Dlya vyhoda vvedite -1");
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            String num = reader.readLine();
-
-            num1 = Integer.parseInt(num);
-
-            if (num1 > 0 && num1 < 10)
-                Matrix.createMatrix(num1);
-            else if (num1 == -1) System.out.println("Bye bye");
-            else System.out.println("Oshibka vvoda chisla");
+        System.out.println("Демонстрация матрицы, состоящей из чисел от 1 до 9-ти");
+        System.out.println("Введите число от 1 до 9! Для выхода введите q");
+        String num = reader.readLine();
+        if (num.equals("q")) System.out.println("Пока");
+        else {
+            try {
+                int num1 = Integer.parseInt(num);
+                if (num1 > 0 && num1 < 10)
+                    Matrix.createMatrix(num1);
+                else System.out.println("Ошибка ввода числа");
+            } catch (
+                    NumberFormatException e) {
+                System.out.println("Ошибка ввода. Нужно вводить число");
+            }
+        }
+        //слово палиндром
+        System.out.println("Демонстрация метода палиндром для слова");
+        System.out.println("Введите слово, а я определю палиндром это или нет: ");
+        String inputWord = reader.readLine();
+        if (Palindrom.checkWord(inputWord)) {
+            System.out.println("Слово палиндром");
+        } else System.out.println("слово не палиндром");
+//фраза палиндром
+        System.out.println("Демонстрация метода палиндром для фразы");
+        System.out.println("Введите фразу, а я определю палиндром это или нет: ");
+        String inputPhrase = reader.readLine();
+        if (Palindrom.checkPhrase(inputPhrase)) {
+            System.out.println("Фраза Палиндром");
+        } else {
+            System.out.println("Фраза не палиндром");
         }
 
-        //Демонстрация метода arrayMultiplication
-        System.out.println("Vvedite rasmernost massiva");
+//Демонстрация метода arrayMultiplication
+        System.out.println("Демонстрация метода перемножения элементов массива");
+        System.out.println("Введите размерность перемножаемого массива");
         try {
-            BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-            String inputLength = input.readLine();
+            String inputLength = reader.readLine();
             int arrayLength = Integer.parseInt(inputLength);
             int[] array = new int[arrayLength];
-            System.out.println("Vvedite elementy massiva");
+            System.out.println("Введите элементы массива");
             for (int i = 0; i < arrayLength; i++) {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                 String inputElement = reader.readLine();
                 int value = Integer.parseInt(inputElement);
                 array[i] = value;
             }
-            System.out.println("Result multiplie array: " + Arithmetic.arrayMultiplication(array));
-        }catch (NumberFormatException e){
-            System.out.println("Oshibka vvoda! Neobhodimo vvodit tolko chisla");
+            System.out.println("Результат перемножения элементов массива: " + Arithmetic.arrayMultiplication(array));
+        } catch (
+                NumberFormatException e) {
+            System.out.println("Ошибка ввода! Необходимо вводить числовые значения");
         }
 // Демонстрация функции возведения в степень
-        System.out.println("Vvedite chislo, kotoroe budem vozvodit v stepen");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Демонстрация метода возведения в степень");
+        System.out.println("Введите число, которое будем возводить в степень");
         String input = reader.readLine();
-        try{int x = Integer.parseInt(input);
-        System.out.println("Vvedite stepen v kotoruyu budem vozvodit");
-        BufferedReader reader2 = new BufferedReader(new InputStreamReader(System.in));
-        String input2 = reader.readLine();
-        int y = Integer.parseInt(input2);
-        System.out.println("Resultat vozvedeniya v stepen: " + Arithmetic.power(x,y));
-        }catch (NumberFormatException e){
-            System.out.println("Error! Neobhodimo vvodit tolko chisla");
+        try {
+            int x = Integer.parseInt(input);
+            System.out.println("Введите степень, в которую будем возводить число");
+            String input2 = reader.readLine();
+            int y = Integer.parseInt(input2);
+            System.out.println("Результат возведения в степень: " + Arithmetic.power(x, y));
+        } catch (
+                NumberFormatException e) {
+            System.out.println("Ошибка ввода! Необходимо вводить числовые значения");
         }
 // Демонстрации функции деления
-        System.out.println("Vvedite chislo kotoroe budem delit: ");
-        BufferedReader reader3 = new BufferedReader(new InputStreamReader(System.in));
-        String input3 = reader.readLine();
-        int a = Integer.parseInt(input3);
-        System.out.println("Vvedite chislo na kotoroe budem delit: ");
-        BufferedReader reader4 = new BufferedReader(new InputStreamReader(System.in));
-        String input4 = reader.readLine();
-        int b = Integer.parseInt(input4);
-        if (Arithmetic.division(a,b)!=0)
-        System.out.println("Результат операции деления: "+ Arithmetic.division(a,b));
-
+        try {
+            System.out.println("Демонстрация метода деления");
+            System.out.println("Введите делимое: ");
+            String input3 = reader.readLine();
+            int a = Integer.parseInt(input3);
+            System.out.println("Введите делитель: ");
+            String input4 = reader.readLine();
+            int b = Integer.parseInt(input4);
+            if (b != 0)
+                System.out.println("Результат операции деления: " + Arithmetic.division(a, b));
+            else System.out.println("Ошибка! Деление на 0!");
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка! Необходимо вводить только числа");
+        }
 
 //Демонстрация функции извлечения корня
-        System.out.println("Введите число из которого будем извлекать корень");
-        BufferedReader reader5 = new BufferedReader(new InputStreamReader(System.in));
-        String input5 = reader.readLine();
-        int n = Integer.parseInt(input5);
-        if (n < 0) System.out.println("Ошибка! Нельзя извлекать корень из отрицательных чисел");
-        else System.out.println("Результат операции извлечения корня: " +Arithmetic.root(n));
-
-
+        try {
+            System.out.println("Демонстрация метода извлечения корня");
+            System.out.println("Введите число из которого будем извлекать корень");
+            String input5 = reader.readLine();
+            int n = Integer.parseInt(input5);
+            if (n < 0) System.out.println("Ошибка! Нельзя извлекать корень из отрицательных чисел");
+            else System.out.println("Результат операции извлечения корня: " + Arithmetic.root(n));
+        } catch (NumberFormatException e) {
+            System.out.println("Ошибка! Необходимо вводить только число");
+        }
     }
 }
 
