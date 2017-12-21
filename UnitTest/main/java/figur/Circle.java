@@ -43,8 +43,9 @@ public class Circle extends Geometry {
     }
 
     @Override
-    public void move(int stepX) {
+    public void move(int stepX, int stepY) {
         coordX = coordX + stepX;
+        coordY = coordY + stepY;
     }
 
     @Override
@@ -56,6 +57,8 @@ public class Circle extends Geometry {
 
     @Override
     public void resize(double resizeKoef) {
-        radius = radius * resizeKoef;
+        if (resizeKoef >= 0 && resizeKoef <= 1)
+            radius = radius * resizeKoef;
+        else radius = radius;
     }
 }

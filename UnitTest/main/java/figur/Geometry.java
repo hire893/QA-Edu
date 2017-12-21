@@ -1,12 +1,13 @@
 package figur;
 
 public abstract class Geometry {
-   protected double coordX;
-   protected double coordY;
-   protected double radius;
-   protected int stepX;
-   protected double a, b, c;
-   protected double side;
+    protected double coordX;
+    protected double coordY;
+    protected double radius;
+    protected int stepX;
+    protected int stepY;
+    protected double a, b, c;
+    protected double side;
 
     public double getCoordX() {
         return coordX;
@@ -38,6 +39,14 @@ public abstract class Geometry {
 
     public void setStepX(int stepX) {
         this.stepX = stepX;
+    }
+
+    public int getStepY() {
+        return stepY;
+    }
+
+    public void setStepY(int stepY) {
+        this.stepY = stepY;
     }
 
     public double getA() {
@@ -72,7 +81,7 @@ public abstract class Geometry {
         this.side = side;
     }
 
-    public abstract void move(int stepX);
+    public abstract void move(int stepX, int stepY);
 
     public abstract double area();
 

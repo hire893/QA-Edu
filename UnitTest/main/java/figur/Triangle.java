@@ -11,9 +11,9 @@ public class Triangle extends Geometry {
     }
 
     @Override
-    public void move(int step) {
-        coordX += step;
-        coordY += step;
+    public void move(int stepX, int stepY) {
+        coordX += stepX;
+        coordY += stepY;
     }
 
 //    @Override

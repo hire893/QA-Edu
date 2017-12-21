@@ -26,9 +26,9 @@ public class Square extends Geometry {
     }
 
     @Override
-    public void move(int stepX) {
+    public void move(int stepX, int stepY) {
         coordX += stepX;
-        coordY += stepX;
+        coordY += stepY;
     }
 
     @Override
