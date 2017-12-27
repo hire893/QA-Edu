@@ -1,0 +1,21 @@
+
+1. На главное странице сайта http://stackoverflow.com/ написать XPath для (рисунок по ссылке https://goo.gl/Yg3Mzd ):
+a) //div[@class='-main']
+b) //span[@class='bounty-indicator-tab']
+c) //a[@class='question-hyperlink']
+d) //*[@id='question-summary-47979471']//a[contains(text(),'iOS')]
+e) //div[@class='question-summary narrow' ]//a[contains(text(),'javascript')]/ancestor::div/h3
+2. На странице http://www.seleniumhq.org/ выбираем все картинки, которые содержат в альтернативном тексте (атрибут alt) слово 'Selenium' или ‘logo’
+//img[contains(@alt,'Selenium')or contains(@alt,'logo')]
+3. На странице http://www.seleniumhq.org/ выбрать точно те элементы футера, которые выделены пунктиром на рисунке ( https://goo.gl/7jSDSw )
+//*[@id='sitemap']/li/ul/li[position()>2]
+4. На странице https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Daps&field-keywords=yellow+duck+&rh=i%3Aaps%2Ck%3Ayellow+duck+  найти
+a)Все линки на товары, содержащие слово Prime
+//i[contains(@class,'icon-prime')]//../parent::div/parent::div//preceding-sibling::div/parent::div/parent::div/parent::div/parent::div//h2
+b) Все линки на товары, не содержащие слово Prime
+.//li[contains(@id,'result') and not(.//i[contains(@class, 'a-icon-prime')])]//h2
+5. Amazon dropdown со странами
+a) все страны после Германии
+.//li[@class='a-dropdown-item']/a[@id='icp-selected-country_5']//following::a
+b) все страны после Германии + Германия
+.//li[@class='a-dropdown-item']/a[@id='icp-selected-country_4']//following::a
