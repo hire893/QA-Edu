@@ -4,10 +4,19 @@ import amazoneMapping.CartPage;
 import amazoneMapping.ProductPage;
 import amazoneMapping.SearchPage;
 import amazoneMapping.StartPage;
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+<<<<<<< HEAD
+=======
+
+=======
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -15,23 +24,48 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+<<<<<<< HEAD
+=======
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestAmazone {
     private WebDriver driver;
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     @Before
     public void Before() {
         System.setProperty("webdriver.chromedriver", "F:\\karas\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://www.amazon.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     }
 
     @After
     public void After() {
         driver.quit();
+<<<<<<< HEAD
+=======
+=======
+    }
+    @After
+    public void After(){
+        driver.close();
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     }
 
     @Test
@@ -81,9 +115,17 @@ public class TestAmazone {
             Assert.assertTrue("Цена товара в корзине не соответствует цене заказанного товара" + element.toString() + "не равно: " + price + "или: " + price2, element == price || element == price2);
             sum += element;
         }
+<<<<<<< HEAD
 
         Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart() == sum);
 
+=======
+<<<<<<< HEAD
+        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart() == sum);
+=======
+        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart()==sum);
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
         for (WebElement element : cartPageDriver.getNameProductsInCart()) {
             Assert.assertTrue("Наименование товара в корзине не совпадает с заказанным товаром: " + element.getText() + "не равно: " + title + "или: " + title2, element.getText().equals(title) || element.getText().equals(title2));
         }
@@ -121,7 +163,11 @@ public class TestAmazone {
             Assert.assertTrue("Attention! Items in cart are invalid after deleting 2nd item" + element.getText() + "name 1:   " + name1 + "name3:  " + name3, element.getText().equals(name1) || element.getText().equals(name3));
         }
     }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 
     @Test
     public void Test005Updateqty() { //Ищем 3 товара, добавляем в корзину, изменяем количество. Проверяем, что сумма в корзине = сумме заказа
@@ -151,6 +197,11 @@ public class TestAmazone {
         startPage.toCart();
         Assert.assertFalse("Сумма заказа в корзине " + cartPage.getSumInCart() + " не равна сумме всех заказанных товаров " + orderSum, cartPage.getSumInCart() != orderSum);
     }
+<<<<<<< HEAD
 
+=======
+=======
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
+>>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 }
 
