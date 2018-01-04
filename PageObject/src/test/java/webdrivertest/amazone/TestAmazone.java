@@ -4,30 +4,50 @@ import amazoneMapping.CartPage;
 import amazoneMapping.ProductPage;
 import amazoneMapping.SearchPage;
 import amazoneMapping.StartPage;
+<<<<<<< HEAD
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+=======
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestAmazone {
     private WebDriver driver;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
     @Before
     public void Before() {
         System.setProperty("webdriver.chromedriver", "F:\\karas\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://www.amazon.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+<<<<<<< HEAD
 
     }
 
     @After
     public void After() {
         driver.quit();
+=======
+    }
+    @After
+    public void After(){
+        driver.close();
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
     }
 
     @Test
@@ -77,7 +97,11 @@ public class TestAmazone {
             Assert.assertTrue("Цена товара в корзине не соответствует цене заказанного товара" + element.toString() + "не равно: " + price + "или: " + price2, element == price || element == price2);
             sum += element;
         }
+<<<<<<< HEAD
         Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart() == sum);
+=======
+        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart()==sum);
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
         for (WebElement element : cartPageDriver.getNameProductsInCart()) {
             Assert.assertTrue("Наименование товара в корзине не совпадает с заказанным товаром: " + element.getText() + "не равно: " + title + "или: " + title2, element.getText().equals(title) || element.getText().equals(title2));
         }
@@ -115,6 +139,7 @@ public class TestAmazone {
             Assert.assertTrue("Attention! Items in cart are invalid after deleting 2nd item" + element.getText() + "name 1:   " + name1 + "name3:  " + name3, element.getText().equals(name1) || element.getText().equals(name3));
         }
     }
+<<<<<<< HEAD
 
     @Test
     public void Test005Updateqty() { //Ищем 3 товара, добавляем в корзину, изменяем количество. Проверяем, что сумма в корзине = сумме заказа
@@ -144,5 +169,7 @@ public class TestAmazone {
         startPage.toCart();
         Assert.assertFalse("Сумма заказа в корзине " + cartPage.getSumInCart() + " не равна сумме всех заказанных товаров " + orderSum, cartPage.getSumInCart() != orderSum);
     }
+=======
+>>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
 }
 
