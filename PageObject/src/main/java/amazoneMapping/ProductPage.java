@@ -37,10 +37,6 @@ public class ProductPage {
     @FindBy(xpath = ".//*[@id='nav-logo']/a/span[contains(text(),'Amazon')]")
     private WebElement siteLogo;
 
-//    public WebElement getProductTitle() {
-//        return productTitle;
-//    }
-
     public void setQty6()  {
         changeQty.sendKeys("6");
     }
@@ -52,6 +48,7 @@ public class ProductPage {
     public void setQty3()  {
         changeQty.sendKeys("3");
     }
+
     public double getPrice() {
         String s = productPrice.getText().replace("$", "");
         return Double.parseDouble(s);
@@ -68,7 +65,5 @@ public class ProductPage {
     public void goMainPage() {
         siteLogo.click();
     }
-
-
 }
 
