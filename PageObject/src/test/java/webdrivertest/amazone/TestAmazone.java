@@ -4,19 +4,10 @@ import amazoneMapping.CartPage;
 import amazoneMapping.ProductPage;
 import amazoneMapping.SearchPage;
 import amazoneMapping.StartPage;
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-<<<<<<< HEAD
-=======
-
-=======
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -24,112 +15,78 @@ import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-<<<<<<< HEAD
-=======
->>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class TestAmazone {
     private WebDriver driver;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-
-=======
->>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     @Before
     public void Before() {
         System.setProperty("webdriver.chromedriver", "F:\\karas\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://www.amazon.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     }
 
     @After
     public void After() {
         driver.quit();
-<<<<<<< HEAD
-=======
-=======
-    }
-    @After
-    public void After(){
-        driver.close();
->>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     }
 
     @Test
     public void Test001Search() {
-        StartPage startPageDriver = new StartPage(driver);
-        startPageDriver.findProduct("Duck");
-        SearchPage searchPageDriver = new SearchPage(driver);
-        for (WebElement element : searchPageDriver.getSearchResults()) {
+        StartPage startPage = new StartPage(driver);
+        startPage.findProduct("Duck");
+        SearchPage searchPage = new SearchPage(driver);
+        for (WebElement element : searchPage.getSearchResults()) {
             Assert.assertTrue("Поиск работает неправильно! Следующая строка выдана неверно: " + element.getText(), element.getText().contains("duck") || element.getText().contains("Duck") || element.getText().contains("DUCK"));
         }
     }
 
     @Test
     public void Test002Search() throws InterruptedException {
-        StartPage startPageDriver = new StartPage(driver);
-        startPageDriver.findProduct("Duck");
-        SearchPage searchPageDriver = new SearchPage(driver);
-        int res1 = searchPageDriver.resultCountAfterSearch();
-        startPageDriver.babyFilter();
-        startPageDriver.searchSubmitClick();
+        StartPage startPage = new StartPage(driver);
+        startPage.findProduct("Duck");
+        SearchPage searchPage = new SearchPage(driver);
+        int res1 = searchPage.resultCountAfterSearch();
+        startPage.babyFilter();
+        startPage.searchSubmitClick();
         Thread.sleep(500);
-        int res2 = searchPageDriver.resultCountAfterSearch();
+        int res2 = searchPage.resultCountAfterSearch();
         Assert.assertTrue("Количество товаров после фильтрации, больше, чем во всем списке " + res1 + " > " + res2, res1 > res2);
     }
 
     @Test
     public void Test003SearchAndToCart() {
-        StartPage startPageDriver = new StartPage(driver);
-        startPageDriver.findProduct("knife kitchen");
-        SearchPage searchPageDriver = new SearchPage(driver);
-        searchPageDriver.knifeSelect();
-        ProductPage productPageDriver = new ProductPage(driver);
-        String title = productPageDriver.getProductTitle();
-        double price = productPageDriver.getPrice();
-        productPageDriver.addToCart();
-        productPageDriver.goMainPage();
-        startPageDriver.findProduct("duck");
-        searchPageDriver.selectProduct7();
-        String title2 = productPageDriver.getProductTitle();
-        double price2 = productPageDriver.getPrice();
-        productPageDriver.addToCart();
-        productPageDriver.goMainPage();
-        startPageDriver.toCart();
-        CartPage cartPageDriver = new CartPage(driver);
+        StartPage startPage = new StartPage(driver);
+        startPage.findProduct("knife kitchen");
+        SearchPage searchPage = new SearchPage(driver);
+        searchPage.knifeSelect();
+        ProductPage productPage = new ProductPage(driver);
+        String title = productPage.getProductTitle();
+        double price = productPage.getPrice();
+        productPage.addToCart();
+        productPage.goMainPage();
+        startPage.findProduct("duck");
+        searchPage.selectProduct7();
+        String title2 = productPage.getProductTitle();
+        double price2 = productPage.getPrice();
+        productPage.addToCart();
+        productPage.goMainPage();
+        startPage.toCart();
+        CartPage cartPage = new CartPage(driver);
         double sum = 0;
-        for (Double element : cartPageDriver.getPriceProductsInCart()) {
+        for (Double element : cartPage.getPriceProductsInCart()) {
             Assert.assertTrue("Цена товара в корзине не соответствует цене заказанного товара" + element.toString() + "не равно: " + price + "или: " + price2, element == price || element == price2);
             sum += element;
         }
-<<<<<<< HEAD
-
-        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart() == sum);
-
-=======
-<<<<<<< HEAD
-        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart() == sum);
-=======
-        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart()==sum);
->>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
-        for (WebElement element : cartPageDriver.getNameProductsInCart()) {
+        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPage.getSumInCart() == sum);
+        for (WebElement element : cartPage.getNameProductsInCart()) {
             Assert.assertTrue("Наименование товара в корзине не совпадает с заказанным товаром: " + element.getText() + "не равно: " + title + "или: " + title2, element.getText().equals(title) || element.getText().equals(title2));
         }
-        Assert.assertFalse("Количество товаров в корзине не равняется двум", cartPageDriver.getPriceProductsInCart().size() != 2);
+        Assert.assertFalse("Количество товаров в корзине не равняется двум", cartPage.getPriceProductsInCart().size() != 2);
     }
 
     @Test
@@ -163,11 +120,6 @@ public class TestAmazone {
             Assert.assertTrue("Attention! Items in cart are invalid after deleting 2nd item" + element.getText() + "name 1:   " + name1 + "name3:  " + name3, element.getText().equals(name1) || element.getText().equals(name3));
         }
     }
-<<<<<<< HEAD
-
-=======
-<<<<<<< HEAD
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 
     @Test
     public void Test005Updateqty() { //Ищем 3 товара, добавляем в корзину, изменяем количество. Проверяем, что сумма в корзине = сумме заказа
@@ -197,11 +149,5 @@ public class TestAmazone {
         startPage.toCart();
         Assert.assertFalse("Сумма заказа в корзине " + cartPage.getSumInCart() + " не равна сумме всех заказанных товаров " + orderSum, cartPage.getSumInCart() != orderSum);
     }
-<<<<<<< HEAD
-
-=======
-=======
->>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 }
 

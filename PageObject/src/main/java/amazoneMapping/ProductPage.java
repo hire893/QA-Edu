@@ -25,18 +25,8 @@ public class ProductPage {
     @FindBy(xpath = ".//*[@id='productTitle']")
     private WebElement productTitle;
 
-<<<<<<< HEAD
     @FindBy(xpath = ".//*[@id='quantity']/option[@value,2]")
     private WebElement qty2;
-=======
-<<<<<<< HEAD
-    @FindBy(xpath = ".//*[@id='quantity']/option[@value,2]")
-    private WebElement qty2;
-=======
-    @FindBy(xpath = ".//*[@id='quantity']/option[@value,1]")
-    private WebElement qty1;
->>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
 
     @FindBy(xpath = ".//*[@id='quantity']/option[@value,3]")
     private WebElement qty3;
@@ -47,14 +37,6 @@ public class ProductPage {
     @FindBy(xpath = ".//*[@id='nav-logo']/a/span[contains(text(),'Amazon')]")
     private WebElement siteLogo;
 
-<<<<<<< HEAD
-=======
-//    public WebElement getProductTitle() {
-//        return productTitle;
-//    }
-
-<<<<<<< HEAD
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     public void setQty6()  {
         changeQty.sendKeys("6");
     }
@@ -66,12 +48,7 @@ public class ProductPage {
     public void setQty3()  {
         changeQty.sendKeys("3");
     }
-<<<<<<< HEAD
 
-=======
-=======
->>>>>>> cf9e1e6fb1624b034394cee12db0584e48f85520
->>>>>>> 30c1821011eb72e30d615cd918be64caa75ba454
     public double getPrice() {
         String s = productPrice.getText().replace("$", "");
         return Double.parseDouble(s);
