@@ -27,13 +27,21 @@ public class TestAmazone {
         driver = new ChromeDriver();
         driver.get("https://www.amazon.com/");
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+<<<<<<< .mine
 
+=======
+
+>>>>>>> .theirs
     }
 
     @After
     public void After() {
         driver.quit();
+<<<<<<< .mine
     }
+=======
+
+>>>>>>> .theirs
 
     @Test
     public void Test001Search() {
@@ -82,8 +90,19 @@ public class TestAmazone {
             Assert.assertTrue("Цена товара в корзине не соответствует цене заказанного товара" + element.toString() + "не равно: " + price + "или: " + price2, element == price || element == price2);
             sum += element;
         }
+<<<<<<< .mine
         Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPage.getSumInCart() == sum);
         for (WebElement element : cartPage.getNameProductsInCart()) {
+
+
+
+=======
+
+        Assert.assertTrue("Сумма товаров в корзине, не равняется сумме заказанных товаров", cartPageDriver.getSumInCart() == sum);
+
+
+        for (WebElement element : cartPageDriver.getNameProductsInCart()) {
+>>>>>>> .theirs
             Assert.assertTrue("Наименование товара в корзине не совпадает с заказанным товаром: " + element.getText() + "не равно: " + title + "или: " + title2, element.getText().equals(title) || element.getText().equals(title2));
         }
         Assert.assertFalse("Количество товаров в корзине не равняется двум", cartPage.getPriceProductsInCart().size() != 2);
