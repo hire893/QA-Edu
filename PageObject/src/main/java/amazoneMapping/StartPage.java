@@ -25,20 +25,21 @@ public class StartPage {
     @FindBy(xpath = ".//*[@id='searchDropdownBox']/option[@value = 'search-alias=baby-products']")
     private WebElement searchForBaby;
 
-    public void findProduct(String text) {
+    public void searchInput(String text) {
         searchField.sendKeys(text);
-        searchSubmit.click();
     }
 
-    public void searchSubmitClick() {
+    public SearchPage toSearchPage() {
         searchSubmit.click();
+        return new SearchPage(driver);
     }
 
     public void babyFilter() {
         searchForBaby.click();
     }
 
-    public void toCart() {
+    public CartPage toCart() {
         cartLink.click();
+        return new CartPage(driver);
     }
 }

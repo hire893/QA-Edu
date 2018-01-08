@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 public class SearchPage {
     private final WebDriver driver;
@@ -52,25 +53,33 @@ public class SearchPage {
         return count;
     }
 
-    public void knifeSelect(){
-        search8InchKnife.click();
+    public ProductPage knifeSelect(){
+        search8InchKnife.click()        ;
+        return new ProductPage(driver);
+    }
+
+    public ProductPage toRandomProductPage() {
+        Random random = new Random();
+        WebElement randomElement = searchResults.get(random.nextInt(12));
+        randomElement.click();
+        return new ProductPage(driver);
     }
 
     public String getProductName(){
         return productName.getText();
     }
 
-    public void selectProduct8(){
-        product8.click();
-    }
-
-    public void selectProduct7(){
-        product7.click();
-    }
-
-    public void selectProduct4(){
-        product4.click();
-    }
+//    public ProductPage selectProduct8(){
+//        product8.click();
+//    }
+//
+//    public void selectProduct7(){
+//        product7.click();
+//    }
+//
+//    public ProductPage selectProduct4(){
+//        product4.click();
+//    }
 }
 
 
